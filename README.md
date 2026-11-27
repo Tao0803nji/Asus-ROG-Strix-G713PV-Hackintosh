@@ -64,13 +64,12 @@
 | 风扇曲线控制 | ❌ | 未实现（SSDT 写 EC 会导致卡死，已停用） |
 | NVIDIA 温度 / 功耗传感器 | ✅ | SMCNvidiaGPU 2.3 |
 | Apple ID / iCloud 云盘 | ✅ | 登录正常 |
-| iCloud 照片 | ⚠️ | 需先把照片图库放到系统默认路径，见「已知问题」 |
+| iCloud 照片 | ⚠️ | 需把照片图库放到系统默认路径 |
 | App Store | ✅ | |
 | iMessage / FaceTime | ❌ | 目前 IDS 注册失败，未解决 |
 | 隔空投送（AirDrop） | ⚠️ | 系统显示支持，未实测 |
 | 通用剪贴板 / Handoff | ⚠️ | 未实测 |
 | 睡眠 / 唤醒 | ⚠️ | 未充分测试 |
-| 桌面动态壁纸 | ❌ | WindowServer 背景层无视频合成通路（锁屏可播） |
 | 雷电 / USB4 | ⚠️ | 未测试 |
 
 ---
@@ -79,41 +78,41 @@
 
 | Kext | 版本 | 作用 | 上游 |
 | --- | --- | --- | --- |
-| Lilu | 1.7.3 | 内核补丁基础框架 | acidanthera |
-| VirtualSMC | 1.3.9 | SMC 模拟 | acidanthera |
-| SMCBatteryManager | 1.3.9 | 电池状态 | acidanthera (VirtualSMC 插件) |
-| SMCLightSensor | 1.3.9 | 环境光传感器 | acidanthera (VirtualSMC 插件) |
-| AMDRyzenCPUPowerManagement | 0.7.2 | Ryzen CPU 电源管理 | trulyspinach |
-| SMCAMDProcessor | 1 | Ryzen 频率/温度传感器 | trulyspinach |
-| ForgedInvariant | 1.5.0 | AMD CPU 特性修补 | ChefKiss |
-| AMFIPass | 1.4.1 | AMFI 放行，允许未签名 kext | dhinakg |
-| AppleALC | 1.9.9 | 声卡 AppleHDA 补丁 | acidanthera |
-| SimpleHDA | 1.0.0 | HDA 辅助补丁 | laobamac |
-| NMHDA | 1.0.0 | NVIDIA HDMI/DP 音频 | NullMoth |
-| CirrusAudioFixup | 1.2.1 | CS35L41 功放支持（`1043:1D1F`） | hoaug-tran |
-| AppleMCEReporterDisabler | 1.2 | 关闭 MCE Reporter，避免 AMD panic | xlnc |
-| RealtekRTL8111 | 2.4.2 | 有线网卡 | Mieze |
-| MtkWirelessWifi | 1.0.9 | MT7922 Wi-Fi（AirportMtkWlan） | dinovn |
-| MtkWirelessBT | 1.0.9 | MT7922 蓝牙 | dinovn |
-| BlueToolFixup | 2.7.2 | 蓝牙协议修补 | acidanthera (BrcmPatchRAM) |
-| RestrictEvents | 1.1.7 | CPU 名称/内存/PCI 修补（`revpatch`） | acidanthera |
-| USBToolBox + UTBMap | 1.2.0 / 1.1 | USB 端口映射 | dhinakg / USBToolBox |
-| VoodooI2C + VoodooI2CServices / VoodooGPIO / VoodooInput / VoodooI2CHID | 2.9.1 / 1 | I2C 触控板与 HID | alexandred（本机用含 `VoodooI2CTransferToAddress` 的 main 分支构建） |
-| VoodooPS2Controller | 2.3.8 | 内置键盘（PS2 通道） | acidanthera |
-| SMCAsusFan | 1.0.0 | ASUS 风扇 SMC 键（F0Ac/F1Ac） | 社区 |
-| AsusWmi | 0.2.2 | ASUS WMI 接口，供 ROG Control 使用 | itlmt7925（GeekAudio 分支） |
-| SMCNvidiaGPU | 2.3 | NVIDIA GPU 传感器（温度/功耗/频率） | zzzyy678 |
-| AsusFanControl | 1.4.2 | ❌ **已禁用**（本机不工作且屏蔽 SMC 风扇键） | hieplpvip |
+| [Lilu](https://github.com/acidanthera/Lilu) | 1.7.3 | 内核补丁基础框架 | [acidanthera](https://github.com/acidanthera) |
+| [VirtualSMC](https://github.com/acidanthera/VirtualSMC) | 1.3.9 | SMC 模拟 | [acidanthera](https://github.com/acidanthera) |
+| [SMCBatteryManager](https://github.com/acidanthera/VirtualSMC) | 1.3.9 | 电池状态 | [acidanthera](https://github.com/acidanthera)（VirtualSMC 插件） |
+| [SMCLightSensor](https://github.com/acidanthera/VirtualSMC) | 1.3.9 | 环境光传感器 | [acidanthera](https://github.com/acidanthera)（VirtualSMC 插件） |
+| [AMDRyzenCPUPowerManagement](https://github.com/trulyspinach) | 0.7.2 | Ryzen CPU 电源管理 | [trulyspinach](https://github.com/trulyspinach) |
+| [SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor) | 1 | Ryzen 频率/温度传感器 | [trulyspinach](https://github.com/trulyspinach) |
+| [ForgedInvariant](https://github.com/ChefKissInc/ForgedInvariant) | 1.5.0 | AMD CPU 特性修补 | [ChefKiss](https://github.com/ChefKiss) |
+| [AMFIPass](https://github.com/dhinakg) | 1.4.1 | AMFI 放行，允许未签名 kext | [dhinakg](https://github.com/dhinakg) |
+| [AppleALC](https://github.com/acidanthera/AppleALC) | 1.9.9 | 声卡 AppleHDA 补丁 | [acidanthera](https://github.com/acidanthera) |
+| [SimpleHDA](https://github.com/laobamac/SimpleHDA) | 1.0.0 | HDA 辅助补丁 | [laobamac](https://github.com/laobamac) |
+| [NMHDA](https://github.com/nullmoth) | 1.0.0 | NVIDIA HDMI/DP 音频 | [NullMoth](https://github.com/nullmoth) |
+| [CirrusAudioFixup](https://github.com/hoaug-tran/CirrusAudioFixup) | 1.2.1 | CS35L41 功放支持（`1043:1D1F`） | [hoaug-tran](https://github.com/hoaug-tran) |
+| [AppleMCEReporterDisabler](https://github.com/xlnc) | 1.2 | 关闭 MCE Reporter，避免 AMD panic | [xlnc](https://github.com/xlnc) |
+| [RealtekRTL8111](https://github.com/Mieze) | 2.4.2 | 有线网卡 | [Mieze](https://github.com/Mieze) |
+| [MtkWirelessWifi](https://github.com/dinovn) | 1.0.9 | MT7922 Wi-Fi（AirportMtkWlan） | [dinovn](https://github.com/dinovn) |
+| [MtkWirelessBT](https://github.com/dinovn) | 1.0.9 | MT7922 蓝牙 | [dinovn](https://github.com/dinovn) |
+| [BlueToolFixup](https://github.com/acidanthera/BrcmPatchRAM) | 2.7.2 | 蓝牙协议修补 | [acidanthera](https://github.com/acidanthera)（[BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM)） |
+| [RestrictEvents](https://github.com/acidanthera/RestrictEvents) | 1.1.7 | CPU 名称/内存/PCI 修补（`revpatch`） | [acidanthera](https://github.com/acidanthera) |
+| [USBToolBox](https://github.com/USBToolBox/kext) + [UTBMap](https://github.com/USBToolBox/kext) | 1.2.0 / 1.1 | USB 端口映射 | [dhinakg](https://github.com/dhinakg) / [USBToolBox](https://github.com/USBToolBox) |
+| [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C) + VoodooI2CServices / VoodooGPIO / VoodooInput / VoodooI2CHID | 2.9.1 / 1 | I2C 触控板与 HID | [alexandred](https://github.com/alexandred)（本机用含 `VoodooI2CTransferToAddress` 的 main 分支构建） |
+| [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2) | 2.3.8 | 内置键盘（PS2 通道） | [acidanthera](https://github.com/acidanthera) |
+| SMCAsusFan | 1.0.0 | ASUS 风扇 SMC 键（F0Ac/F1Ac） | 社区（无独立上游仓库） |
+| [AsusWmi](https://github.com/GeekAudio) | 0.2.2 | ASUS WMI 接口，供 ROG Control 使用 | [GeekAudio](https://github.com/GeekAudio) 分支 |
+| [SMCNvidiaGPU](https://github.com/zzzyy678/SMCNvidiaGPU) | 2.3 | NVIDIA GPU 传感器（温度/功耗/频率） | [zzzyy678](https://github.com/zzzyy678) |
+| [AsusFanControl](https://github.com/hieplpvip) | 1.4.2 | ❌ **已禁用**（本机不工作且屏蔽 SMC 风扇键） | [hieplpvip](https://github.com/hieplpvip) |
 
 ### 不在 EFI 内的驱动
 
-NVIDIA 显卡驱动栈由 NullMoth 的 1401 安装器写入 `/Library/Extensions`：
+NVIDIA 显卡驱动栈由 [NullMoth](https://github.com/nullmoth) 的 [1401 安装器](https://github.com/nullmoth/1401) 写入 `/Library/Extensions`：
 
 ```
 NVRM.kext 3.1 / NVAccel.kext 3.1 / NVRMFB.kext 3.1 / NVRMAGDC.kext 3.1 / NMXAudio.kext / NMHDA.kext
 ```
 
-它们不随 EFI 分发，请从 NullMoth / 1401 项目获取对应版本（**3.1**），版本不匹配会黑屏。
+它们不随 EFI 分发，请从 [NullMoth](https://github.com/nullmoth) / [1401 项目](https://github.com/nullmoth/1401) 获取对应版本（**3.1**），版本不匹配会黑屏。
 
 ---
 
@@ -277,19 +276,13 @@ sudo chmod 644 /Library/Displays/.../DisplayProductID-b69
 1. **iMessage / FaceTime 无法登录**
    Apple ID 本身可正常登录，但 IDS 注册在证书请求阶段失败（`FTMessageDeliveryNoResultCodeError`），账号随即被禁用（`Decomposing registration`）。ROM 已修正为 en0 MAC，仍未解决，可能与序列号/MLB 组合或 Apple 的注册风控有关。
 
-2. **iCloud 照片无法开启**
-   macOS 的系统照片图库默认路径是 `~/Pictures/Photos Library.photoslibrary`。如果图库建在其他位置（例如家目录），iCloud 照片开关会读不到 CPL 设置。解决办法：把图库移到默认路径，或在 `~/Pictures` 下做符号链接。
-
-3. **桌面动态壁纸不播放**
-   WindowServer 的背景层在这套 NVIDIA 驱动上没有视频合成通路；锁屏可以播放，桌面不行。换编码/改覆盖都无效。
-
-4. **风扇曲线控制未实现**
+2. **风扇曲线控制未实现**
    `SSDT-FANCFG` 尝试在 `_INI` 写 EC 会导致交棒后卡死，已停用。目前只能读转速（SMCAsusFan）、用 ROG Control 切换性能模式（AsusWmi）。
 
-5. **开机带 `-v` 详细模式**
+3. **开机带 `-v` 详细模式**
    稳定后可自行删掉 `-v debug=0x100 keepsyms=1`。
 
-6. **睡眠/唤醒未充分验证**
+4. **睡眠/唤醒未充分验证**
    合盖睡眠、唤醒后外设恢复等情况还没有系统测试。
 
 ---
@@ -298,7 +291,7 @@ sudo chmod 644 /Library/Displays/.../DisplayProductID-b69
 
 - [OpenCore](https://github.com/acidanthera/OpenCorePkg) 及 Acidanthera 全家桶
 - [NullMoth NVRM](https://github.com/nullmoth) —— NVIDIA RTX 4060 在 macOS 下的驱动
-- [1401 项目](https://github.com/1401-team) —— 安装器与硬件适配
+- [1401 项目](https://github.com/nullmoth/1401) —— 安装器与硬件适配
 - [hoaug-tran/VoodooI2C](https://github.com/hoaug-tran/VoodooI2C) / [CirrusAudioFixup](https://github.com/hoaug-tran) —— CS35L41 支持
 - [wjjkld/ROG-Strix-G17-G713PV-Hackintosh](https://github.com/wjjkld) —— 同型号参考
 - [zzzyy678/SMCNvidiaGPU](https://github.com/zzzyy678/SMCNvidiaGPU)
