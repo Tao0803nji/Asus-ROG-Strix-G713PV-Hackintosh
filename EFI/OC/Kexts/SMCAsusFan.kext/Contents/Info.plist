@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>SMCAsusFan</string>
+	<key>CFBundleIdentifier</key>
+	<string>asus.smc.SMCAsusFan</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>SMCAsusFan</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>ASUS ROG IT5571 EC fan tachometer bridge</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>SMCAsusFan</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>asus.smc.SMCAsusFan</string>
+			<key>IOClass</key>
+			<string>SMCAsusFan</string>
+			<key>IOMatchCategory</key>
+			<string>SMCAsusFan</string>
+			<key>IOProviderClass</key>
+			<string>IOResources</string>
+			<key>IOResourceMatch</key>
+			<string>IOKit</string>
+		</dict>
+	</dict>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<!-- 本 kext 只用 VirtualSMC SDK 的 API，不直接依赖 Lilu，故不列 Lilu 依赖 -->
+		<key>as.vit9696.VirtualSMC</key>
+		<string>1.0.0</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>14.0.0</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>14.0.0</string>
+		<key>com.apple.kpi.mach</key>
+		<string>14.0.0</string>
+	</dict>
+	<key>OSBundleRequired</key>
+	<string>Root</string>
+</dict>
+</plist>
