@@ -34,8 +34,8 @@
 | 内屏 | BOE NE173QHM-NZ2，17.3" 2560×1440 240Hz（eDP） | ✅ 240Hz 可用，HiDPI 见「可选增强」 |
 | 内存 | 16 GB DDR5 | ✅ |
 | 硬盘 | WD PC SN560 1TB NVMe | ✅ |
-| 无线网卡 | MediaTek MT7922（`0x14c3:0xe0df`） | ✅ AirportMtkWlan 1.0.9 |
-| 蓝牙 | MT7922（同一模块） | ✅ |
+| 无线网卡 | MediaTek MT7922（`0x14c3:0xe0df`） | ✅ MtkWireless 1.1.3 |
+| 蓝牙 | MT7922（同一模块） | ✅ MtkWirelessBT 1.1.3 |
 | 有线网卡 | Realtek RTL8111 | ✅ en0，BuiltIn = true |
 | 声卡 | Realtek ALC294 + 2 × Cirrus CS35L41 智能功放 | ✅ layout-id 13 |
 | 电池 | 内置锂电池 | ✅ SMCBatteryManager |
@@ -67,10 +67,12 @@
 | iCloud 照片 | ⚠️ | 需把照片图库放到系统默认路径 |
 | App Store | ✅ | |
 | iMessage / FaceTime | ❌ | 目前 IDS 注册失败，未解决 |
-| 隔空投送（AirDrop） | ⚠️ | 系统显示支持，未实测 |
-| 通用剪贴板 / Handoff | ⚠️ | 未实测 |
+| 隔空投送（AirDrop） | ✅ | 双向可用（MtkWireless 1.1.3 的 AWDL + BLE 广播修复） |
+| 通用剪贴板 / Handoff | ⚠️ | 驱动栈已支持，本机未单独验证 |
 | 睡眠 / 唤醒 | ⚠️ | 未充分测试 |
 | 雷电 / USB4 | ⚠️ | 未测试 |
+
+> **隔空投送已修复**（2026-11-28）：需要 [Dino-VN/MtkWireless](https://github.com/Dino-VN/MtkWireless) **1.1.3** 及以上版本的 `MtkWirelessWifi` + `MtkWirelessBT`，旧版 1.0.x 缺少 AWDL 与 BLE 广播修复。本机 iPhone ↔ Mac 双向投送实测正常（上游实测约 4 MB/s）。所需的两个蓝牙 NVRAM 键（`bluetoothInternalControllerInfo` / `bluetoothExternalDongleFailed`）已写入本 EFI 的 `config.plist`。
 
 ---
 
@@ -92,8 +94,8 @@
 | [CirrusAudioFixup](https://github.com/hoaug-tran/CirrusAudioFixup) | 1.2.1 | CS35L41 功放支持（`1043:1D1F`） | [hoaug-tran](https://github.com/hoaug-tran) |
 | [AppleMCEReporterDisabler](https://github.com/xlnc) | 1.2 | 关闭 MCE Reporter，避免 AMD panic | [xlnc](https://github.com/xlnc) |
 | [RealtekRTL8111](https://github.com/Mieze) | 2.4.2 | 有线网卡 | [Mieze](https://github.com/Mieze) |
-| [MtkWirelessWifi](https://github.com/dinovn) | 1.0.9 | MT7922 Wi-Fi（AirportMtkWlan） | [dinovn](https://github.com/dinovn) |
-| [MtkWirelessBT](https://github.com/dinovn) | 1.0.9 | MT7922 蓝牙 | [dinovn](https://github.com/dinovn) |
+| [MtkWirelessWifi](https://github.com/Dino-VN/MtkWireless) | 1.1.3 | MT7922 Wi-Fi（原生栈 / AWDL） | [Dino-VN](https://github.com/Dino-VN) |
+| [MtkWirelessBT](https://github.com/Dino-VN/MtkWireless) | 1.1.3 | MT7922 蓝牙（固件加载 + `bluetoothd` 补丁） | [Dino-VN](https://github.com/Dino-VN) |
 | [BlueToolFixup](https://github.com/acidanthera/BrcmPatchRAM) | 2.7.2 | 蓝牙协议修补 | [acidanthera](https://github.com/acidanthera)（[BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM)） |
 | [RestrictEvents](https://github.com/acidanthera/RestrictEvents) | 1.1.7 | CPU 名称/内存/PCI 修补（`revpatch`） | [acidanthera](https://github.com/acidanthera) |
 | [USBToolBox](https://github.com/USBToolBox/kext) + [UTBMap](https://github.com/USBToolBox/kext) | 1.2.0 / 1.1 | USB 端口映射 | [dhinakg](https://github.com/dhinakg) / [USBToolBox](https://github.com/USBToolBox) |
@@ -296,6 +298,7 @@ sudo chmod 644 /Library/Displays/.../DisplayProductID-b69
 - [wjjkld/ROG-Strix-G17-G713PV-Hackintosh](https://github.com/wjjkld) —— 同型号参考
 - [zzzyy678/SMCNvidiaGPU](https://github.com/zzzyy678/SMCNvidiaGPU)
 - [GeekAudio/rog-control-macos](https://github.com/GeekAudio/rog-control-macos)
+- [Dino-VN/MtkWireless](https://github.com/Dino-VN/MtkWireless) —— MT7922 的 Wi-Fi / 蓝牙驱动，隔空投送修复
 
 ---
 
